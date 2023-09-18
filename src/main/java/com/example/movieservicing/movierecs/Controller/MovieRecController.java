@@ -17,7 +17,6 @@ public class MovieRecController {
     @Autowired
     public RecService movieService;
 
-
     @GetMapping("/movies/recommendations")
     public List<Movie> getRecommendations() {
         return null; 
