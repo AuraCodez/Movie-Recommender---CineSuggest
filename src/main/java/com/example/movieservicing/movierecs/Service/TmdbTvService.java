@@ -12,10 +12,4 @@ public class TmdbTvService implements TmdbEntityService<Tv> {
         throw new UnsupportedOperationException("Unimplemented method 'fetchPopular'");
     }
 
-    @Override
-    public Tv fetchDetails(Long id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'fetchDetails'");
-    }
-    
 }

@@ -27,23 +27,11 @@ public class TmdbMovieService implements TmdbEntityService<Movie> {
     public List<Movie> fetchPopular() {
         String urlEndpoint = String.format("%s/movie/popular?api_key=%s", tmdbBaseUrl, tmdbApiKey);
         MoviesResponse moviesResponse = restTemplate.getForObject(urlEndpoint, MoviesResponse.class);
-        if (moviesResponse != null) {
+        if (moviesResponse != null && !moviesResponse.getResponse().isEmpty()) {
             return moviesResponse.getResponse();
         }
 
         return List.of();
     }
-
-    @Override
-    public Movie fetchDetails(Long id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'fetchDetails'");
-    }
-
-    
-
-
-
-    
     
 }
