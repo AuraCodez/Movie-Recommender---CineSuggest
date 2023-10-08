@@ -1,10 +1,12 @@
 package com.example.movieservicing.movierecs.Service;
 
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.client.RestTemplate;
 import com.example.movieservicing.movierecs.Model.Movie;
+import com.example.movieservicing.movierecs.Model.MoviesResponse;
 
 public class TmdbMovieService implements TmdbEntityService<Movie> {
     @Value("${tmdb.api.base-url}")
@@ -21,10 +23,15 @@ public class TmdbMovieService implements TmdbEntityService<Movie> {
         this.restTemplate = restTemplate;
     }
 
-    @Override
+    @Override // // PopularMovies returns popular movies response
     public List<Movie> fetchPopular() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'fetchPopular'");
+        String urlEndpoint = String.format("%s/movie/popular?api_key=%s", tmdbBaseUrl, tmdbApiKey);
+        MoviesResponse moviesResponse = restTemplate.getForObject(urlEndpoint, MoviesResponse.class);
+        if (moviesResponse != null) {
+            return moviesResponse.getResponse();
+        }
+
+        return List.of();
     }
 
     @Override
