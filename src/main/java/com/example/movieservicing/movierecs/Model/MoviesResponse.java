@@ -6,7 +6,7 @@ public class MoviesResponse {
    private List<Movie> results;
    
 
-   public List<Movie> getResponse() {
+   public List<Movie> getMovieResponse() {
     return results;
    }
 }

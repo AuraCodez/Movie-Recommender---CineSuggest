@@ -27,8 +27,8 @@ public class TmdbMovieService implements TmdbEntityService<Movie> {
     public List<Movie> fetchPopular() {
         String urlEndpoint = String.format("%s/movie/popular?api_key=%s", tmdbBaseUrl, tmdbApiKey);
         MoviesResponse moviesResponse = restTemplate.getForObject(urlEndpoint, MoviesResponse.class);
-        if (moviesResponse != null && !moviesResponse.getResponse().isEmpty()) {
-            return moviesResponse.getResponse();
+        if (moviesResponse != null && !moviesResponse.getMovieResponse().isEmpty()) {
+            return moviesResponse.getMovieResponse();
         }
 
         return List.of();
