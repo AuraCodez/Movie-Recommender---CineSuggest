@@ -33,5 +33,5 @@ public class TmdbMovieService implements TmdbEntityService<Movie> {
 
         return List.of();
     }
-    
+
 }

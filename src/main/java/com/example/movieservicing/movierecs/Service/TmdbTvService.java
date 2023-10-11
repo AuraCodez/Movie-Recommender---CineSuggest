@@ -21,15 +21,13 @@ public class TmdbTvService implements TmdbEntityService<Tv> {
         this.restTemplate = restTemplate;
     }
 
-
-
     @Override
     public List<Tv> fetchPopular() {
         String urlEndpoint = String.format("%s/tv/popular?api_key=%s", tmdbBaseUrl, tmdbApiKey);
         TvResponse tvResponse = restTemplate.getForObject(urlEndpoint, TvResponse.class);
         if (tvResponse != null && !tvResponse.getTvResponse().isEmpty()) {
             return tvResponse.getTvResponse();
-            
+
         }
         return List.of();
     }
