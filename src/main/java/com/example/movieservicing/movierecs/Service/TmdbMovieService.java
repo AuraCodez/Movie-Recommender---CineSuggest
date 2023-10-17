@@ -3,6 +3,8 @@ package com.example.movieservicing.movierecs.Service;
 import java.util.Collections;
 import java.util.List;
 
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.client.RestTemplate;
 import com.example.movieservicing.movierecs.Model.Movie;
@@ -15,6 +17,8 @@ public class TmdbMovieService implements TmdbEntityService<Movie> {
     @Value("${tmdb.api.key}")
     private String tmdbApiKey;
 
+    private static final Logger logger = LoggerFactory.getLogger(TmdbMovieService.class);
+
     // Use restTemplate field somewhere in the methods of the class to fix the error
 
     private final RestTemplate restTemplate;
@@ -26,9 +30,17 @@ public class TmdbMovieService implements TmdbEntityService<Movie> {
     @Override // // PopularMovies returns popular movies response
     public List<Movie> fetchPopular() {
         String urlEndpoint = String.format("%s/movie/popular?api_key=%s", tmdbBaseUrl, tmdbApiKey);
-        MoviesResponse moviesResponse = restTemplate.getForObject(urlEndpoint, MoviesResponse.class);
-        if (moviesResponse != null && !moviesResponse.getMovieResponse().isEmpty()) {
-            return moviesResponse.getMovieResponse();
+        try {
+            MoviesResponse moviesResponse = restTemplate.getForObject(urlEndpoint, MoviesResponse.class);
+            if (moviesResponse != null && !moviesResponse.getMovieResponse().isEmpty()) {
+                return moviesResponse.getMovieResponse();
+            } else {
+                return List.of();
+            }
+
+        } catch (Exception e) {
+            // Preferably just log this for security reasons
+            logger.error("Failed to get movies response API!");
         }
 
         return List.of();
