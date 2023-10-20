@@ -34,9 +34,7 @@ public class TmdbMovieService implements TmdbEntityService<Movie> {
             MoviesResponse moviesResponse = restTemplate.getForObject(urlEndpoint, MoviesResponse.class);
             if (moviesResponse != null && !moviesResponse.getMovieResponse().isEmpty()) {
                 return moviesResponse.getMovieResponse();
-            } else {
-                return List.of();
-            }
+            } 
 
         } catch (Exception e) {
             // Preferably just log this for security reasons
