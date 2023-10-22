@@ -5,11 +5,13 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import com.example.movieservicing.movierecs.Model.Tv;
 import com.example.movieservicing.movierecs.Model.TvResponse;
 
+@Service
 public class TmdbTvService implements TmdbEntityService<Tv> {
     @Value("${tmdb.api.base-url}")
     private String tmdbBaseUrl;
@@ -32,7 +34,7 @@ public class TmdbTvService implements TmdbEntityService<Tv> {
             TvResponse tvResponse = restTemplate.getForObject(urlEndpoint, TvResponse.class);
             if (tvResponse != null && !tvResponse.getTvResponse().isEmpty()) {
                 return tvResponse.getTvResponse();
-            } 
+            }
 
         } catch (Exception e) {
             logger.error("Failed to get TV response API!");

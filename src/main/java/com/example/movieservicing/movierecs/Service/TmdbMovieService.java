@@ -1,15 +1,16 @@
 package com.example.movieservicing.movierecs.Service;
 
-import java.util.Collections;
 import java.util.List;
 
 import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import com.example.movieservicing.movierecs.Model.Movie;
 import com.example.movieservicing.movierecs.Model.MoviesResponse;
 
+@Service
 public class TmdbMovieService implements TmdbEntityService<Movie> {
     @Value("${tmdb.api.base-url}")
     private String tmdbBaseUrl;
@@ -34,7 +35,7 @@ public class TmdbMovieService implements TmdbEntityService<Movie> {
             MoviesResponse moviesResponse = restTemplate.getForObject(urlEndpoint, MoviesResponse.class);
             if (moviesResponse != null && !moviesResponse.getMovieResponse().isEmpty()) {
                 return moviesResponse.getMovieResponse();
-            } 
+            }
 
         } catch (Exception e) {
             // Preferably just log this for security reasons
