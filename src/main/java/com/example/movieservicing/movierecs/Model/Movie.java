@@ -19,6 +19,10 @@ public class Movie {
     public Movie() {
     }
 
+    public Movie(String originalTitle) {
+        this.originalTitle = originalTitle;
+    }
+
     public Movie(Integer id, String originalTitle, String overview, List<Integer> genreIds, double popularity,
             String releaseDate, int voteCount, int voteAverage) {
         this.id = id;
