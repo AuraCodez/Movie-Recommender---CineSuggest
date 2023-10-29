@@ -11,4 +11,4 @@ I am working on creating the UI of this application and also working on the logi
 Java, Spring Boot, MongoDB, Thymeleaf and Boostrap. Experiementing with React for the Front end.
 
 #### Using this application
-For now, there isn't a way to use the application as it is. I still need to deploy it on a cloud platform such as AWS or Heroku.
+Planning to deploy it on a cloud platform such as AWS or Heroku.
