@@ -8,7 +8,7 @@ I am making a movie/book recommendation system based on the user preferences. So
 I am working on creating the UI of this application and also working on the logic where it asks what genre/series/actors they enjoy a lot, and then trying to narrow down to very specific movies or tv shows they may enjoy.
 
 #### Technologies and Frameworks Used
-Java, Spring Boot, MongoDB, Thymeleaf and Boostrap. Experiementing with Angular or React with the Front end.
+Java, Spring Boot, MongoDB, Thymeleaf and Boostrap. Experiementing with React for the Front end.
 
 #### Using this application
 For now, there isn't a way to use the application as it is. I still need to deploy it on a cloud platform such as AWS or Heroku.
