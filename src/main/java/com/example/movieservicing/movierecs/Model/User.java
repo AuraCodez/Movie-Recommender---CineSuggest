@@ -28,7 +28,8 @@ public class User {
         this.email = email;
     }
 
-    public User() {
+    public User(String userName) {
+        this.userName = userName;
         this.dateRegistered = new Date();
     }
 
