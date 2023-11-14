@@ -38,7 +38,6 @@ public class TmdbMovieService implements TmdbEntityService<Movie> {
             }
 
         } catch (Exception e) {
-            // Preferably just log this for security reasons
             logger.error("Failed to get movies response API!");
         }
 
