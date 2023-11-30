@@ -1,4 +1,4 @@
-# MovieRecService
+# CineSuggest 
 
 
 #### What is this project about?
