@@ -29,7 +29,11 @@ public class TmdbTvService implements TmdbEntityService<Tv> {
 
     @Override
     public List<Tv> fetchPopular() {
-        String urlEndpoint = String.format("%s/tv/popular?api_key=%s", tmdbBaseUrl, tmdbApiKey);
+        // String urlEndpoint =
+        // String.format("%s/tv/popular?language=en-US&page=1api_key=%s", tmdbBaseUrl,
+        // tmdbApiKey);
+        String urlEndpoint = String.format("%smovie/popular?api_key=%s", tmdbBaseUrl, tmdbApiKey);
+
         try {
             TvResponse tvResponse = restTemplate.getForObject(urlEndpoint, TvResponse.class);
             if (tvResponse != null && !tvResponse.getTvResponse().isEmpty()) {
@@ -37,6 +41,7 @@ public class TmdbTvService implements TmdbEntityService<Tv> {
             }
 
         } catch (Exception e) {
+            e.printStackTrace();
             logger.error("Failed to get TV response API!");
         }
 
