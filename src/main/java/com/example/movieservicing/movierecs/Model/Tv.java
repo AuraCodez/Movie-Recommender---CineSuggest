@@ -29,7 +29,7 @@ public class Tv {
         return overview;
     }
 
-    public Double getPopularity() {
+    public double getPopularity() {
         return popularity;
     }
 

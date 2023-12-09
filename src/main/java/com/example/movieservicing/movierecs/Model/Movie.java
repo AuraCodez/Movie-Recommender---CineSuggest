@@ -1,19 +1,24 @@
 package com.example.movieservicing.movierecs.Model;
 
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.data.annotation.Id;
 
 public class Movie {
     @Id
-    private String mongoDbID;
-    private boolean adult;
-    private List<Integer> genreIds;
     private Integer id;
+    private boolean adult;
+    private String backdropPath;
+    private List<Integer> genreIds = new ArrayList<>();
+    private String originalLanguage;
     private String originalTitle;
     private String overview;
     private double popularity;
+    private String posterPath;
     private String releaseDate;
-    private int voteAverage;
+    private String title;
+    private boolean video;
+    private double voteAverage;
     private int voteCount;
 
     public Movie() {
@@ -24,9 +29,8 @@ public class Movie {
         this.popularity = popularity;
     }
 
-    public Movie(Integer id, String originalTitle, String overview, List<Integer> genreIds, double popularity,
+    public Movie(String originalTitle, String overview, List<Integer> genreIds, double popularity,
             String releaseDate, int voteCount, int voteAverage) {
-        this.id = id;
         this.originalTitle = originalTitle;
         this.overview = overview;
         this.genreIds = genreIds;
@@ -36,8 +40,28 @@ public class Movie {
         this.voteAverage = voteAverage;
     }
 
+    public String getPosterPath() {
+        return posterPath;
+    }
+
+    public void setPosterPath(String posterPath) {
+        this.posterPath = posterPath;
+    }
+
+    public String getBackdropPath() {
+        return backdropPath;
+    }
+
+    public void setBackdropPath(String backdropPath) {
+        this.backdropPath = backdropPath;
+    }
+
     public boolean isAdult() {
         return adult;
+    }
+
+    public boolean isVideo() {
+        return video;
     }
 
     public void setAdult(boolean adult) {
@@ -45,10 +69,27 @@ public class Movie {
     }
 
     public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getOriginalTitle() {
         return originalTitle;
     }
 
-    public void setTitle(String originalTitle) {
+    public String getOriginalLanguage() {
+        return originalLanguage;
+    }
+
+    public void setOriginalLanguage(String originalLanguage) {
+        this.originalLanguage = originalLanguage;
+
+    }
+
+    public void setOriginalTitle(String originalTitle) {
         this.originalTitle = originalTitle;
     }
 
@@ -80,7 +121,7 @@ public class Movie {
         this.voteCount = voteCount;
     }
 
-    public int getVoteAverage() {
+    public double getVoteAverage() {
         return voteAverage;
     }
 
