@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import com.example.movieservicing.movierecs.Model.Movie;
 import com.example.movieservicing.movierecs.Model.MoviesResponse;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Service
 public class TmdbMovieService implements TmdbEntityService<Movie> {
@@ -31,13 +32,10 @@ public class TmdbMovieService implements TmdbEntityService<Movie> {
     @Override // // PopularMovies returns popular movies response
     public List<Movie> fetchPopular() {
         String urlEndpoint = String.format("%smovie/popular?api_key=%s", tmdbBaseUrl, tmdbApiKey);
-        System.out.println(urlEndpoint);
         try {
             MoviesResponse moviesResponse = restTemplate.getForObject(urlEndpoint, MoviesResponse.class);
-            String rawResponse = restTemplate.getForObject(urlEndpoint, String.class);
-            // logger.info("Raw API " + rawResponse);
-            if (moviesResponse != null && !moviesResponse.getMovieResponse().isEmpty()) {
-                return moviesResponse.getMovieResponse();
+            if (moviesResponse != null && !moviesResponse.getResults().isEmpty()) {
+                return moviesResponse.getResults();
             }
 
         } catch (Exception e) {

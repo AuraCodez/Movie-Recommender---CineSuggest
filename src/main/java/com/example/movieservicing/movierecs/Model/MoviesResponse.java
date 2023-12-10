@@ -1,15 +1,25 @@
 package com.example.movieservicing.movierecs.Model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.List;
 
 public class MoviesResponse {
    private List<Movie> results;
    private int page;
-   private int totalPages;
+
+   @JsonProperty("total_results")
    private int totalResults;
 
-   public List<Movie> getMovieResponse() {
+   @JsonProperty("total_pages")
+   private int totalPages;
+
+   public List<Movie> getResults() {
       return results;
+   }
+
+   public int getTotalResults() {
+      return totalResults;
    }
 
    public int getPage() {
@@ -20,7 +30,4 @@ public class MoviesResponse {
       return totalPages;
    }
 
-   public int totalResults() {
-      return totalResults;
-   }
 }

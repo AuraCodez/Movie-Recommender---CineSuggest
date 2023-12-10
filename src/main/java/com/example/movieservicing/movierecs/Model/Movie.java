@@ -1,24 +1,45 @@
 package com.example.movieservicing.movierecs.Model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.data.annotation.Id;
 
 public class Movie {
     @Id
-    private Integer id;
     private boolean adult;
+
+    @JsonProperty("backdrop_path")
     private String backdropPath;
+
+    @JsonProperty("genre_ids")
     private List<Integer> genreIds = new ArrayList<>();
+
+    @JsonProperty("original_language")
     private String originalLanguage;
+
+    @JsonProperty("original_title")
     private String originalTitle;
+
     private String overview;
     private double popularity;
+
+    private int id;
+
+    @JsonProperty("poster_path")
     private String posterPath;
+
+    @JsonProperty("release_date")
     private String releaseDate;
+
     private String title;
     private boolean video;
+
+    @JsonProperty("vote_average")
     private double voteAverage;
+
+    @JsonProperty("vote_count")
     private int voteCount;
 
     public Movie() {
@@ -38,6 +59,14 @@ public class Movie {
         this.releaseDate = releaseDate;
         this.voteCount = voteCount;
         this.voteAverage = voteAverage;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getPosterPath() {
