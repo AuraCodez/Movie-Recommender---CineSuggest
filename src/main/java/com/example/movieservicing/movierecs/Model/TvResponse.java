@@ -1,15 +1,33 @@
 package com.example.movieservicing.movierecs.Model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.List;
 
 public class TvResponse {
-    private int page;
-    private List<Tv> results;
-    private int totalPages;
-    private int totalResults;
+   private List<Tv> results;
+   private int page;
 
-    public List<Tv> getTvResponse() {
-        return results;
-    }
+   @JsonProperty("total_results")
+   private int totalResults;
+
+   @JsonProperty("total_pages")
+   private int totalPages;
+
+   public List<Tv> getResults() {
+      return results;
+   }
+
+   public int getTotalResults() {
+      return totalResults;
+   }
+
+   public int getPage() {
+      return page;
+   }
+
+   public int getTotalPages() {
+      return totalPages;
+   }
 
 }

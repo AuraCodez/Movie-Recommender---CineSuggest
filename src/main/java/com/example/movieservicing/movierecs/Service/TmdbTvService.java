@@ -29,14 +29,11 @@ public class TmdbTvService implements TmdbEntityService<Tv> {
 
     @Override
     public List<Tv> fetchPopular() {
-        // String urlEndpoint =
-        // String.format("%s/tv/popular?language=en-US&page=1api_key=%s", tmdbBaseUrl,
-        // tmdbApiKey);
-        String urlEndpoint = String.format("%smovie/popular?api_key=%s", tmdbBaseUrl, tmdbApiKey);
+        String urlEndpoint = String.format("%stv/popular?api_key=%s", tmdbBaseUrl, tmdbApiKey);
         try {
             TvResponse tvResponse = restTemplate.getForObject(urlEndpoint, TvResponse.class);
-            if (tvResponse != null && !tvResponse.getTvResponse().isEmpty()) {
-                return tvResponse.getTvResponse();
+            if (tvResponse != null && !tvResponse.getResults().isEmpty()) {
+                return tvResponse.getResults();
             }
 
         } catch (Exception e) {

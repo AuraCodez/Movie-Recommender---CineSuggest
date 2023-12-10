@@ -7,7 +7,7 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 import com.example.movieservicing.movierecs.Model.Tv;
 
 public interface TvRepository extends MongoRepository<Tv, String> {
-    Tv findByName(String originalName);
+    Tv findByOriginalTitle(String originalTitle);
     List<Tv> findByPopularity(double popularity);
 
 }
