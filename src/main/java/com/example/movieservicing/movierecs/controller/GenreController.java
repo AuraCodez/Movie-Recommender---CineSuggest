@@ -17,8 +17,11 @@ import com.example.movieservicing.movierecs.service.GenreService;
 @RequestMapping
 public class GenreController {
 
-    @Autowired
-    public GenreService genreService;
+    private final GenreService genreService;
+
+    public GenreController(GenreService genreService) {
+        this.genreService = genreService;
+    }
 
     @RequestMapping(value = "/genres", method = RequestMethod.GET)
     public ResponseEntity<Map<String, List<Genre>>> getGenres() {

@@ -14,17 +14,20 @@ import com.example.movieservicing.movierecs.service.TmdbTvService;
 @RequestMapping("/tv")
 public class TvRecController {
 
-    @Autowired
-    private TmdbTvService tvRecService;
+    private final TmdbTvService tvService;
+
+    public TvRecController(TmdbTvService tvService) {
+        this.tvService = tvService;
+    }
 
     @GetMapping("/recommendations")
     public List<Tv> getRecommendationsForUser() {
-        return tvRecService.fetchPopular();
+        return tvService.fetchPopular();
     }
 
     @GetMapping("/trending")
     public List<Tv> getTrendingTvForUsers() {
-        return tvRecService.fetchTrending();
+        return tvService.fetchTrending();
     }
 
 }
