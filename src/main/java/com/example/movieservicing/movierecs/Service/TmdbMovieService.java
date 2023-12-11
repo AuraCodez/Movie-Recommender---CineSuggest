@@ -22,15 +22,12 @@ public class TmdbMovieService implements TmdbEntityService<Movie> {
 
     private static final Logger logger = LoggerFactory.getLogger(TmdbMovieService.class);
 
-    // Use restTemplate field somewhere in the methods of the class to fix the error
-
     private final RestTemplate restTemplate;
 
     public TmdbMovieService(RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
     }
 
-    @Override // // PopularMovies returns popular movies response
     public List<Movie> fetchPopular() {
         String urlEndpoint = String.format("%smovie/popular?api_key=%s", tmdbBaseUrl, tmdbApiKey);
         try {
@@ -41,7 +38,21 @@ public class TmdbMovieService implements TmdbEntityService<Movie> {
 
         } catch (Exception e) {
             e.printStackTrace();
-            logger.error("Failed to get movies response API!");
+            logger.error("Failed to get popular movies!");
+        }
+
+        return List.of();
+    }
+
+    public List<Movie> fetchTrending() {
+        String urlEndpoint = String.format("%strending/movie/week?api_key=%s", tmdbBaseUrl, tmdbApiKey);
+        try {
+            MoviesResponse moviesResponse = restTemplate.getForObject(urlEndpoint, MoviesResponse.class);
+            if (moviesResponse != null && !moviesResponse.getResults().isEmpty()) {
+                return moviesResponse.getResults();
+            }
+        } catch (Exception e) {
+            logger.error("Failed to get trending movies!");
         }
 
         return List.of();

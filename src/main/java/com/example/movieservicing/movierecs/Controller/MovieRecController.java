@@ -22,4 +22,9 @@ public class MovieRecController {
         return movieService.fetchPopular();
     }
 
+    @GetMapping("/trending")
+    public List<Movie> getTrending() {
+        return movieService.fetchTrending();
+    }
+
 }
