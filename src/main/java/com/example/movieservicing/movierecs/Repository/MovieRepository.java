@@ -1,8 +1,8 @@
-package com.example.movieservicing.movierecs.Repository;
+package com.example.movieservicing.movierecs.repository;
 
 import org.springframework.stereotype.Repository;
 
-import com.example.movieservicing.movierecs.Model.Movie;
+import com.example.movieservicing.movierecs.model.Movie;
 
 import java.util.List;
 

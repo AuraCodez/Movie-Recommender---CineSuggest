@@ -7,10 +7,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-import com.example.movieservicing.movierecs.Model.Movie;
-import com.example.movieservicing.movierecs.Model.User;
-import com.example.movieservicing.movierecs.Repository.MovieRepository;
-import com.example.movieservicing.movierecs.Repository.UserRepository;
+import com.example.movieservicing.movierecs.model.Movie;
+import com.example.movieservicing.movierecs.model.User;
+import com.example.movieservicing.movierecs.repository.MovieRepository;
+import com.example.movieservicing.movierecs.repository.UserRepository;
 
 @SpringBootApplication
 public class MovierecsApplication {

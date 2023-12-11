@@ -1,4 +1,4 @@
-package com.example.movieservicing.movierecs.Configuration;
+package com.example.movieservicing.movierecs.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

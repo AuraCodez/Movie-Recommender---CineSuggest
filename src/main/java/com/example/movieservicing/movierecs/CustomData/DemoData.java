@@ -1,4 +1,4 @@
-package com.example.movieservicing.movierecs.CustomData;
+package com.example.movieservicing.movierecs.customData;
 
 public class DemoData {
     

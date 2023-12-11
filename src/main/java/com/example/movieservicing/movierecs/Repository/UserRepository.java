@@ -1,9 +1,9 @@
-package com.example.movieservicing.movierecs.Repository;
+package com.example.movieservicing.movierecs.repository;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
-import com.example.movieservicing.movierecs.Model.User;
+import com.example.movieservicing.movierecs.model.User;
 
 @Repository
 public interface UserRepository extends MongoRepository<User, String> {

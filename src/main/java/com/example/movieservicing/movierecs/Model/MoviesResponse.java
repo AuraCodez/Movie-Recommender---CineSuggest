@@ -1,4 +1,4 @@
-package com.example.movieservicing.movierecs.Model;
+package com.example.movieservicing.movierecs.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

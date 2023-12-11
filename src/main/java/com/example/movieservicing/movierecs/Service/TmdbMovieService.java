@@ -1,4 +1,4 @@
-package com.example.movieservicing.movierecs.Service;
+package com.example.movieservicing.movierecs.service;
 
 import java.util.List;
 
@@ -7,8 +7,9 @@ import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-import com.example.movieservicing.movierecs.Model.Movie;
-import com.example.movieservicing.movierecs.Model.MoviesResponse;
+
+import com.example.movieservicing.movierecs.model.Movie;
+import com.example.movieservicing.movierecs.model.MoviesResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Service

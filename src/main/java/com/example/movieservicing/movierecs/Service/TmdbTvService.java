@@ -1,4 +1,4 @@
-package com.example.movieservicing.movierecs.Service;
+package com.example.movieservicing.movierecs.service;
 
 import java.util.List;
 
@@ -8,8 +8,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import com.example.movieservicing.movierecs.Model.Tv;
-import com.example.movieservicing.movierecs.Model.TvResponse;
+import com.example.movieservicing.movierecs.model.Tv;
+import com.example.movieservicing.movierecs.model.TvResponse;
 
 @Service
 public class TmdbTvService implements TmdbEntityService<Tv> {
@@ -27,7 +27,6 @@ public class TmdbTvService implements TmdbEntityService<Tv> {
         this.restTemplate = restTemplate;
     }
 
-    @Override
     public List<Tv> fetchPopular() {
         String urlEndpoint = String.format("%stv/popular?api_key=%s", tmdbBaseUrl, tmdbApiKey);
         try {
@@ -38,9 +37,24 @@ public class TmdbTvService implements TmdbEntityService<Tv> {
 
         } catch (Exception e) {
             e.printStackTrace();
-            logger.error("Failed to get TV response API!");
+            logger.error("Failed to get popular TV shows!");
         }
 
+        return List.of();
+    }
+
+    public List<Tv> fetchTrending() {
+        String urlEndpoint = String.format("%strending/tv/week?api_key=%s", tmdbBaseUrl, tmdbApiKey);
+        try {
+            TvResponse tvResponse = restTemplate.getForObject(urlEndpoint, TvResponse.class);
+            if (tvResponse != null && !tvResponse.getResults().isEmpty()) {
+                return tvResponse.getResults();
+            }
+
+        } catch(Exception e) {
+            logger.error("Failed to get trending TV shows!");
+
+        }
         return List.of();
     }
 
