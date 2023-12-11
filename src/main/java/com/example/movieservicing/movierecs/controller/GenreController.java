@@ -19,6 +19,7 @@ public class GenreController {
 
     private final GenreService genreService;
 
+    @Autowired
     public GenreController(GenreService genreService) {
         this.genreService = genreService;
     }

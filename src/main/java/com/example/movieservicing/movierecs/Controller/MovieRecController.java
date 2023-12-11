@@ -13,7 +13,7 @@ import com.example.movieservicing.movierecs.service.TmdbMovieService;
 @RestController
 @RequestMapping("/movies")
 public class MovieRecController {
-    
+
     private final TmdbMovieService movieService;
 
     @Autowired

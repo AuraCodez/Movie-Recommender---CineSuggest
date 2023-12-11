@@ -16,6 +16,7 @@ public class TvRecController {
 
     private final TmdbTvService tvService;
 
+    @Autowired
     public TvRecController(TmdbTvService tvService) {
         this.tvService = tvService;
     }

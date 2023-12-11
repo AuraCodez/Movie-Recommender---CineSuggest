@@ -154,7 +154,7 @@ public class Movie {
         return voteAverage;
     }
 
-    public List<Integer> getGenreIDS() {
+    public List<Integer> getGenreIds() {
         return genreIds;
     }
 

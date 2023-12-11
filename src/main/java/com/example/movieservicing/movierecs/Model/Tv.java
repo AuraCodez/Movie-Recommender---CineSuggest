@@ -69,7 +69,7 @@ public class Tv {
         return firstAirDate;
     }
 
-    public List<String> getOrginCountry() {
+    public List<String> getOriginCountry() {
         return originCountry;
     }
 
@@ -166,7 +166,7 @@ public class Tv {
         return voteAverage;
     }
 
-    public List<Integer> getGenreIDS() {
+    public List<Integer> getGenreIds() {
         return genreIds;
     }
 
