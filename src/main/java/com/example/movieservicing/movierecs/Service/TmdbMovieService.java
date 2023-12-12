@@ -1,6 +1,7 @@
 package com.example.movieservicing.movierecs.service;
 
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
@@ -10,7 +11,6 @@ import org.springframework.web.client.RestTemplate;
 
 import com.example.movieservicing.movierecs.model.Movie;
 import com.example.movieservicing.movierecs.model.MoviesResponse;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Service
 public class TmdbMovieService implements TmdbEntityService<Movie> {
@@ -28,12 +28,15 @@ public class TmdbMovieService implements TmdbEntityService<Movie> {
         this.restTemplate = restTemplate;
     }
 
-    public List<Movie> fetchPopular() {
+    public Map<String, Object> fetchPopular() {
+        Map<String, Object> map = new HashMap<String, Object>();
         String urlEndpoint = String.format("%smovie/popular?api_key=%s", tmdbBaseUrl, tmdbApiKey);
         try {
             MoviesResponse moviesResponse = restTemplate.getForObject(urlEndpoint, MoviesResponse.class);
             if (moviesResponse != null && !moviesResponse.getResults().isEmpty()) {
-                return moviesResponse.getResults();
+                map.put("movies", moviesResponse.getResults());
+                map.put("total_results", moviesResponse.getTotalResults());
+                return map;
             }
 
         } catch (Exception e) {
@@ -41,21 +44,24 @@ public class TmdbMovieService implements TmdbEntityService<Movie> {
             logger.error("Failed to get popular movies!");
         }
 
-        return List.of();
+        return map;
     }
 
-    public List<Movie> fetchTrending() {
+    public Map<String, Object> fetchTrending() {
+        Map<String, Object> map = new HashMap<String, Object>();
         String urlEndpoint = String.format("%strending/movie/week?api_key=%s", tmdbBaseUrl, tmdbApiKey);
         try {
             MoviesResponse moviesResponse = restTemplate.getForObject(urlEndpoint, MoviesResponse.class);
             if (moviesResponse != null && !moviesResponse.getResults().isEmpty()) {
-                return moviesResponse.getResults();
+                map.put("movies", moviesResponse.getResults());
+                map.put("total_results", moviesResponse.getTotalResults());
+                return map;
             }
         } catch (Exception e) {
             logger.error("Failed to get trending movies!");
         }
 
-        return List.of();
+        return map;
     }
 
 }

@@ -1,13 +1,13 @@
 package com.example.movieservicing.movierecs.controller;
 
-import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.movieservicing.movierecs.model.Movie;
 import com.example.movieservicing.movierecs.service.TmdbMovieService;
 
 @RestController
@@ -22,13 +22,16 @@ public class MovieRecController {
     }
 
     @GetMapping("/recommendations")
-    public List<Movie> getRecommendationsForUser() {
-        return movieService.fetchPopular();
+    public ResponseEntity<Map<String, Object>> getPopularMovies() {
+        Map<String, Object> popularMovies = movieService.fetchPopular();
+        return ResponseEntity.ok(popularMovies);
+
     }
 
     @GetMapping("/trending")
-    public List<Movie> getTrending() {
-        return movieService.fetchTrending();
+    public ResponseEntity<Map<String, Object>> getTrendingForMovies() {
+        Map<String, Object> trendingMovies = movieService.fetchTrending();
+        return ResponseEntity.ok(trendingMovies);
     }
 
 }

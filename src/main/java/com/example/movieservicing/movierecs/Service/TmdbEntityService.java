@@ -1,9 +1,10 @@
 package com.example.movieservicing.movierecs.service;
 
 import java.util.List;
+import java.util.Map;
 
 public interface TmdbEntityService<T> {
-    List<T> fetchPopular();
-    List<T> fetchTrending();
-    
+    Map<String, Object>  fetchPopular();
+    Map<String, Object>  fetchTrending();
+
 }

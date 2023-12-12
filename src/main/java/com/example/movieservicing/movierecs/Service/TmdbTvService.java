@@ -1,6 +1,8 @@
 package com.example.movieservicing.movierecs.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,12 +29,15 @@ public class TmdbTvService implements TmdbEntityService<Tv> {
         this.restTemplate = restTemplate;
     }
 
-    public List<Tv> fetchPopular() {
+    public Map<String, Object> fetchPopular() {
+        Map<String, Object> map = new HashMap<String, Object>();
         String urlEndpoint = String.format("%stv/popular?api_key=%s", tmdbBaseUrl, tmdbApiKey);
         try {
             TvResponse tvResponse = restTemplate.getForObject(urlEndpoint, TvResponse.class);
             if (tvResponse != null && !tvResponse.getResults().isEmpty()) {
-                return tvResponse.getResults();
+                map.put("tv", tvResponse.getResults());
+                map.put("total_results", tvResponse.getTotalResults());
+                return map;
             }
 
         } catch (Exception e) {
@@ -40,22 +45,25 @@ public class TmdbTvService implements TmdbEntityService<Tv> {
             logger.error("Failed to get popular TV shows!");
         }
 
-        return List.of();
+        return map;
     }
 
-    public List<Tv> fetchTrending() {
+    public Map<String, Object> fetchTrending() {
+        Map<String, Object> map = new HashMap<String, Object>();
         String urlEndpoint = String.format("%strending/tv/week?api_key=%s", tmdbBaseUrl, tmdbApiKey);
         try {
             TvResponse tvResponse = restTemplate.getForObject(urlEndpoint, TvResponse.class);
             if (tvResponse != null && !tvResponse.getResults().isEmpty()) {
-                return tvResponse.getResults();
+                map.put("tv", tvResponse.getResults());
+                map.put("total_results", tvResponse.getTotalResults());
+                return map;
             }
 
-        } catch(Exception e) {
+        } catch (Exception e) {
             logger.error("Failed to get trending TV shows!");
 
         }
-        return List.of();
+        return map;
     }
 
 }
