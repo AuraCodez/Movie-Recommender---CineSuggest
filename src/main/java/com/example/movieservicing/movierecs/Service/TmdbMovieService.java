@@ -40,7 +40,6 @@ public class TmdbMovieService implements TmdbEntityService<Movie> {
             }
 
         } catch (Exception e) {
-            e.printStackTrace();
             logger.error("Failed to get popular movies!");
         }
 

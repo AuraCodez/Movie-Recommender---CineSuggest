@@ -36,7 +36,6 @@ public class GenreService {
             }
 
         } catch (Exception e) {
-            e.printStackTrace();
             logger.error("Failed to get genres!");
         }
 

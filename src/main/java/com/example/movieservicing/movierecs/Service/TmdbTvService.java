@@ -41,7 +41,6 @@ public class TmdbTvService implements TmdbEntityService<Tv> {
             }
 
         } catch (Exception e) {
-            e.printStackTrace();
             logger.error("Failed to get popular TV shows!");
         }
 
