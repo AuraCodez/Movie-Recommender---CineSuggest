@@ -1,14 +1,10 @@
 package com.example.movieservicing.movierecs;
 
-import java.util.List;
-
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-import com.example.movieservicing.movierecs.model.Movie;
-import com.example.movieservicing.movierecs.model.User;
 import com.example.movieservicing.movierecs.repository.MovieRepository;
 import com.example.movieservicing.movierecs.repository.UserRepository;
 
