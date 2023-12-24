@@ -1,4 +1,4 @@
-# MovieRecService
+# CineSuggest - The best choice to help you choose a movie.
 
 
 #### What is this project about?
