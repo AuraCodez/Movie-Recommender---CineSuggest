@@ -29,6 +29,7 @@ public class GenreController {
         List<Genre> genres = genreService.getMovieGenres();
         Map<String, List<Genre>> map = new HashMap<String, List<Genre>>();
         map.put("genres", genres);
+        // test
         return ResponseEntity.ok(map);
     }
 
