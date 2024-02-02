@@ -32,6 +32,7 @@ function App() {
   const questionsSize = questions.length;
   const [currentQuestionIdx, setCurrentQuestionIdx] = useState(0);
   const [userAnswers, setUserAnswers] = useState([]);
+  const [suggestions, setSuggestions] = useState([]);
 
   const handleAnswerButtonClick = (answerText) => {
     setUserAnswers(prevAnswers => [...prevAnswers, answerText]);
@@ -39,16 +40,13 @@ function App() {
     if (nextQuestion < questionsSize) {
       setCurrentQuestionIdx(nextQuestion);
     } else {
-      // End of the questioniare, here we would handle the end of the questionaire
-      alert("Reached the end of the questionaire, generating movie suggestions. . .");
+      // Generate the suggestions here, and display the suggestions
     }
   }
 
 
   return (
     <div className='app'>
-      {/* HINT: replace "false" with logic to display the 
-      score when the user has answered all the questions */}
       {currentQuestionIdx >= questionsSize ? (
         <div className='score-section'>End of the Questionaire</div>
       ) : (
