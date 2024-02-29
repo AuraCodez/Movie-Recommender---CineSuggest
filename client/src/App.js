@@ -46,14 +46,22 @@ function App() {
   const questionsSize = questions.length;
   const [currentQuestionIdx, setCurrentQuestionIdx] = useState(0);
   const [userAnswers, setUserAnswers] = useState([]);
+  const [quizCompleted, setQuizCompleted] = useState(false);
 
   const handleAnswerButtonClick = (answerText) => {
     setUserAnswers(prevAnswers => [...prevAnswers, answerText]);
     const nextQuestionIdx = currentQuestionIdx + 1;
-    if (nextQuestionIdx <= questionsSize) {
+    console.log("Current Question Index: ", currentQuestionIdx);
+    console.log("Questions Size: ", questionsSize);
+    if (nextQuestionIdx < questionsSize) {
       setCurrentQuestionIdx(nextQuestionIdx);
     } else {
-      // Nothing yet
+      const finalAnswers = [...userAnswers, answerText];
+      const score = finalAnswers.reduce((total, answer) => {
+        return total + (scoringSystem[answer] || 0);
+      }, 0);
+      console.log(score);
+      setQuizCompleted(true);
 
     }
   }
@@ -61,12 +69,13 @@ function App() {
   const restartQuiz = () => {
     setCurrentQuestionIdx(0)
     setUserAnswers([]);
+    setQuizCompleted(false);
   }
 
 
   return (
     <div className='app'>
-      {currentQuestionIdx >= questionsSize ? (
+      {quizCompleted ? (
         <div className='score-section'>
           <div>End of the Questionaire</div>
           <div className='user-answers'>
