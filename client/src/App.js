@@ -51,8 +51,6 @@ function App() {
   const handleAnswerButtonClick = (answerText) => {
     setUserAnswers(prevAnswers => [...prevAnswers, answerText]);
     const nextQuestionIdx = currentQuestionIdx + 1;
-    console.log("Current Question Index: ", currentQuestionIdx);
-    console.log("Questions Size: ", questionsSize);
     if (nextQuestionIdx < questionsSize) {
       setCurrentQuestionIdx(nextQuestionIdx);
     } else {
