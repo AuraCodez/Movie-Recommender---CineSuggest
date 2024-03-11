@@ -59,9 +59,38 @@ function App() {
         return total + (scoringSystem[answer] || 0);
       }, 0);
       console.log(score);
+
+      let userMood = finalAnswers[0];
+      let userOccasion = finalAnswers[1];
+      let userPreferredGenre = finalAnswers[2];
+      //console.log(userMood, userOccasion, userPreferredGenre);
+
+      fetch('http://localhost:3000/movies/user_recommendations', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          "mood": userMood,
+          "occasion": userOccasion,
+          "preferredGenre": userPreferredGenre,
+        }),
+      })
+        .then(response => {
+          if (response.ok) {
+            return response.json();
+          } else {
+            throw new Error("Network Response Error.")
+          }
+        })
+
+        .catch(error => {
+          console.error("Error fetching movie recommendations for user.", error)
+        });
       setQuizCompleted(true);
 
     }
+
   }
 
   const restartQuiz = () => {

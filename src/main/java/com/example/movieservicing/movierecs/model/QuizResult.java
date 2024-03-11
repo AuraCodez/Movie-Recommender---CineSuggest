@@ -46,4 +46,13 @@ public class QuizResult {
         this.preferredGenre = genre;
     }
 
+    @Override
+    public String toString() {
+        return "QuizResponse{" +
+                "mood='" + mood + '\'' +
+                ", occasion='" + occasion + '\'' +
+                ", preferredGenre='" + preferredGenre + '\'' +
+                '}';
+    }
+
 }

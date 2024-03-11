@@ -32,7 +32,6 @@ public class TmdbMovieService implements TmdbEntityService<Movie> {
         Map<String, Object> map = new HashMap<String, Object>();
         String urlEndpoint = String.format("%smovie/popular?api_key=%s", tmdbBaseUrl, tmdbApiKey);
         try {
-            @SuppressWarnings("null")
             MoviesResponse moviesResponse = restTemplate.getForObject(urlEndpoint, MoviesResponse.class);
             if (moviesResponse != null && !moviesResponse.getResults().isEmpty()) {
                 map.put("movies", moviesResponse.getResults());
