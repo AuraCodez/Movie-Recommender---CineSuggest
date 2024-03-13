@@ -58,19 +58,20 @@ function App() {
       const score = finalAnswers.reduce((total, answer) => {
         return total + (scoringSystem[answer] || 0);
       }, 0);
-      console.log(score);
+      // console.log(score)
 
       let userMood = finalAnswers[0];
       let userOccasion = finalAnswers[1];
       let userPreferredGenre = finalAnswers[2];
       //console.log(userMood, userOccasion, userPreferredGenre);
 
-      fetch('http://localhost:3000/movies/user_recommendations', {
+      fetch('http://localhost:8080/movies/user_recommendations', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
+          "quizScore": score,
           "mood": userMood,
           "occasion": userOccasion,
           "preferredGenre": userPreferredGenre,

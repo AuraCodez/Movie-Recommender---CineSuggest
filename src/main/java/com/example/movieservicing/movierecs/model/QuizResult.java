@@ -1,10 +1,19 @@
 package com.example.movieservicing.movierecs.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class QuizResult {
+    @JsonProperty("quizScore")
     private int quizScore;
+    @JsonProperty("mood")
     private String mood;
+    @JsonProperty("occasion")
     private String occasion;
+    @JsonProperty("preferredGenre")
     private String preferredGenre;
+
+    public QuizResult() {
+    }
 
     public QuizResult(int quizScore, String mood, String occasion, String preferredGenre) {
         this.quizScore = quizScore;
