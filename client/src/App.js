@@ -58,11 +58,12 @@ function App() {
       const score = finalAnswers.reduce((total, answer) => {
         return total + (scoringSystem[answer] || 0);
       }, 0);
-      // console.log(score)
 
       let userMood = finalAnswers[0];
       let userOccasion = finalAnswers[1];
       let userPreferredGenre = finalAnswers[2];
+      let userScore = score;
+      console.log(userScore)
       //console.log(userMood, userOccasion, userPreferredGenre);
 
       fetch('http://localhost:8080/movies/user_recommendations', {
@@ -71,7 +72,7 @@ function App() {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          "quizScore": score,
+          "quizScore": userScore,
           "mood": userMood,
           "occasion": userOccasion,
           "preferredGenre": userPreferredGenre,
@@ -84,12 +85,10 @@ function App() {
             throw new Error("Network Response Error.")
           }
         })
-
         .catch(error => {
           console.error("Error fetching movie recommendations for user.", error)
         });
       setQuizCompleted(true);
-
     }
 
   }
