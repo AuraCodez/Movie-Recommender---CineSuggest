@@ -29,7 +29,7 @@ function App() {
       questionText: 'Pick the occasion?',
       answerOptions: [
         { answerText: 'Just myself' },
-        { answerText: 'With a group of friends and family' },
+        { answerText: 'With friends and family' },
       ],
     },
     {
