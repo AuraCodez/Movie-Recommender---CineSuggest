@@ -1,6 +1,5 @@
 package com.example.movieservicing.movierecs.model;
 
-
 public class QuizResult {
     private int quizScore;
     private String mood;
@@ -21,7 +20,7 @@ public class QuizResult {
         return this.quizScore;
     }
 
-    public void setQuizcore(int quizScore) {
+    public void setQuizScore(int quizScore) {
         this.quizScore = quizScore;
 
     }
@@ -56,6 +55,7 @@ public class QuizResult {
                 "mood='" + mood + '\'' +
                 ", occasion='" + occasion + '\'' +
                 ", preferredGenre='" + preferredGenre + '\'' +
+                ", quizScore=" + quizScore +
                 '}';
     }
 
